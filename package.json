@@ -1,38 +1,20 @@
-{
-  "name": "craigslist-server",
+﻿{
+  "name": "craigslist-redesign",
   "version": "1.0.0",
   "private": true,
-  "main": "dist/index.js",
+  "description": "Modern full-stack classified marketplace redesigning Craigslist",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "prisma:generate": "prisma generate",
-    "prisma:push": "prisma db push",
-    "seed": "tsx prisma/seed.ts",
-    "test": "vitest run"
-  },
-  "dependencies": {
-    "@prisma/client": "^5.19.1",
-    "@types/bcryptjs": "^2.4.6",
-    "@types/cors": "^2.8.17",
-    "@types/express": "^4.17.21",
-    "@types/jsonwebtoken": "^9.0.7",
-    "@types/multer": "^1.4.12",
-    "@types/node": "^22.5.4",
-    "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.0",
-    "jsonwebtoken": "^9.0.2",
-    "multer": "^1.4.5-lts.1",
-    "prisma": "^5.19.1",
-    "tsx": "^4.19.0",
-    "typescript": "^5.5.4"
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"SERVER,CLIENT\" -c \"cyan,magenta\" \"npm run dev:server\" \"npm run dev:client\"",
+    "build:server": "npm --prefix server run build",
+    "build:client": "npm --prefix client run build",
+    "build": "npm run build:server && npm run build:client",
+    "start": "npm --prefix server start",
+    "test:server": "npm --prefix server test",
+    "seed": "npm --prefix server run seed"
   },
   "devDependencies": {
-    "@types/supertest": "^6.0.2",
-    "supertest": "^7.0.0",
-    "vitest": "^2.1.1"
+    "concurrently": "^8.2.2"
   }
 }
