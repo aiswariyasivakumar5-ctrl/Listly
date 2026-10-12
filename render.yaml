@@ -3,7 +3,7 @@ services:
     name: listly-marketplace
     env: node
     plan: free
-    buildCommand: "npm --prefix server install && npm --prefix client install && cd server && npx prisma generate && cd .. && npm run build && cd server && npx prisma db push && npm run seed"
+    buildCommand: npm --prefix server install --include=dev && npm --prefix client install --include=dev && cd server && npx prisma generate && cd .. && npm run build && cd server && npx prisma db push && npm run seed
     startCommand: "npm start"
     envVars:
       - key: NODE_ENV
