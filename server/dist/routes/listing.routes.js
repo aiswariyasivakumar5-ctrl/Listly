@@ -235,6 +235,7 @@ exports.listingRouter.post('/', auth_js_1.requireAuth, async (req, res) => {
                 zipCode: zipCode?.trim() || null,
                 condition: condition || null,
                 attributes: typeof attributes === 'object' ? JSON.stringify(attributes) : attributes || null,
+                currency: 'INR',
                 status: 'ACTIVE',
             },
         });
